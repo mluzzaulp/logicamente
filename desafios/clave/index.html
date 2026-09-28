@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#1b1730" />
-  <meta name="description" content="Apagá todas las luces del tablero: cada toque cambia la luz elegida y sus vecinas." />
-  <title>Luces fuera — Lógicamente</title>
+  <meta name="description" content="Descubrí la clave secreta de figuras deduciendo a partir de las pistas de cada intento." />
+  <title>Clave secreta — Lógicamente</title>
   <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="../../assets/base.css" />
   <link rel="stylesheet" href="../../assets/game.css" />
-  <link rel="stylesheet" href="luces.css" />
+  <link rel="stylesheet" href="clave.css" />
 </head>
 <body>
   <main class="shell">
     <header>
       <a class="brand" href="../../" aria-label="Volver a Lógicamente"><span class="brand-mark">L</span>Lógicamente</a>
       <div class="header-actions">
-        <span class="progress">Desafío 05</span>
+        <span class="progress">Desafío 06</span>
         <button class="share-button" type="button" data-share-open aria-label="Compartir con código QR">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 14h3v3h-3zM18 18h3v3h-3zM14 19h2v2h-2zM19 14h2v2h-2z" fill="currentColor"/></svg>
           <span>Compartir</span>
@@ -29,38 +29,49 @@
 
       <div class="game-top">
         <div>
-          <div class="eyebrow">Desafío 05</div>
-          <h1 id="game-title">Luces fuera</h1>
-          <p class="rules">Cada toque prende o apaga la luz elegida y sus vecinas de arriba, abajo y los costados. Apagalas todas.</p>
+          <div class="eyebrow">Desafío 06</div>
+          <h1 id="game-title">Clave secreta</h1>
+          <p class="rules">Descubrí la clave de figuras. En cada intento, <span class="peg exact" aria-hidden="true"></span><span class="sr-only">un punto lleno</span> es una figura en su lugar y <span class="peg near" aria-hidden="true"></span><span class="sr-only">un punto hueco</span> una que está en la clave, pero en otro lugar. No te dicen cuáles.</p>
         </div>
         <div class="counter" id="count" aria-live="polite"></div>
       </div>
 
       <div class="levels" role="group" aria-label="Nivel">
-        <button class="level" type="button" data-level="0">3×3</button>
-        <button class="level" type="button" data-level="1">4×4</button>
-        <button class="level" type="button" data-level="2">5×5</button>
+        <button class="level" type="button" data-level="0">3 de 4</button>
+        <button class="level" type="button" data-level="1">4 de 6</button>
+        <button class="level" type="button" data-level="2">Clásico</button>
       </div>
 
-      <div class="lights-board" id="board" aria-label="Tablero"></div>
+      <div class="code-board" id="board">
+        <div class="code-row secret" id="secret"></div>
+        <ol class="attempts" id="attempts" aria-label="Intentos"></ol>
+        <div class="code-row guess" id="guess" role="group" aria-label="Tu intento"></div>
+      </div>
 
       <p class="feedback" id="feedback" aria-live="polite"></p>
 
+      <div class="controls" id="controls">
+        <div class="keypad" id="keypad" role="group" aria-label="Figuras"></div>
+        <div class="keypad-actions">
+          <button class="reset" type="button" id="erase">Borrar</button>
+          <button class="reset primary" type="button" id="try">Probar</button>
+        </div>
+      </div>
+
       <div class="actions">
-        <button class="reset" type="button" id="reset">Reiniciar</button>
-        <button class="reset" type="button" id="another">Otro tablero</button>
+        <button class="reset" type="button" id="another">Otra clave</button>
         <button class="reset primary" type="button" id="next" hidden>Siguiente nivel →</button>
-        <span class="tip" id="tip"></span>
+        <span class="tip keyboard-tip">Con teclado: números para las figuras, Enter para probar.</span>
       </div>
     </section>
 
     <section class="opinion-panel" aria-labelledby="opinion-title">
       <h2 class="panel-eyebrow" id="opinion-title">Buzón de opiniones</h2>
-      <div data-opinion="luces"></div>
+      <div data-opinion="clave"></div>
     </section>
   </main>
   <script src="../../assets/compartir.js"></script>
   <script src="../../assets/opiniones.js"></script>
-  <script src="luces.js"></script>
+  <script src="clave.js"></script>
 </body>
 </html>
